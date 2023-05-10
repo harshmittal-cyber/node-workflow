@@ -18,17 +18,19 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
-    - name: Create shared folder
-      run: mkdir -p ${{ github.workspace }}/shared_folder
+    - name: Copy node_modules to shared folder
+      run: mkdir -p ${{ runner.temp }}/shared_folder && cp -r node_modules package.json package-lock.json ${{ runner.temp }}/shared_folder
+    # - name: Create shared folder
+    #   run: mkdir -p ${{ github.workspace }}/shared_folder
 
-    - name: Copy node_modules
-      run: cp -r node_modules $GITHUB_WORKSPACE/shared_folder
+    # - name: Copy node_modules
+    #   run: cp -r node_modules $GITHUB_WORKSPACE/shared_folder
 
-    - name: Copy node_modules
-      run: cp -r package.json $GITHUB_WORKSPACE/shared_folder
+    # - name: Copy node_modules
+    #   run: cp -r package.json $GITHUB_WORKSPACE/shared_folder
     
-    - name: Copy node_modules
-      run: cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
+    # - name: Copy node_modules
+    #   run: cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
     
     - name: cat github workspace
       run: | 
@@ -51,11 +53,24 @@ jobs:
         port: 3000
         timeout: 120
 
-    - name: cat github workspace
+    # - name: cat github workspace
+    #   run: | 
+    #     cd $GITHUB_WORKSPACE
+    #     ls
+    #     cd shared_folder
+    #     ls
+    - name: Copy node_modules from shared folder
+      run: cp -r ${{ runner.temp }}/shared_folder/node_modules .
+
+    - name: Copy node_modules from shared folder
+      run: cp -r ${{ runner.temp }}/shared_folder/package-lock.json .
+
+    - name: Use node_modules
+      run: node index.js
+
+    - name: hi get folder
       run: | 
-        cd $GITHUB_WORKSPACE
-        ls
-        cd shared_folder
+        cd ${{ runner.temp }}
         ls
 
     # - name: ls files
