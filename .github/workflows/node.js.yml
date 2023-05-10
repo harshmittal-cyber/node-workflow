@@ -44,11 +44,13 @@ jobs:
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          
+
       - name: Download the node_modules directory
         uses: actions/download-artifact@v2
         with:
-          name: node_modules
+          name: |
+            package-lock.json
+            package.json
     
       - name: Start server
         run: node index.js
