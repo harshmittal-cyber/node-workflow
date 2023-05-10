@@ -50,43 +50,53 @@ jobs:
 
 
    
-  # runjob:
-  #   needs: build
-  #   runs-on: ubuntu-latest
+  runjob:
+    needs: build
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - name: Use Node.js 14.x
-  #     uses: actions/setup-node@v2
-  #     with:
-  #       node-version: '14.x'
-  #       host: localhost
-  #       port: 3000
-  #       timeout: 120
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        host: localhost
+        port: 3000
+        timeout: 120
 
-  #   - name: give me file
-  #     run: ls
+    - name: give me file
+      run: ls
 
-  #   - name: cat github workspace
-  #     run: cd $GITHUB_WORKSPACE
+    - name: cat github workspace
+      run: cd $GITHUB_WORKSPACE
 
-  #   - name: 'copy the node modulesfiles from github workspce'
-  #     run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
+    - name: 'copy the node modulesfiles from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
 
-  #   - name: 'copy the package json files from github workspce'
-  #     run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
+    - name: 'copy the package json files from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
 
-  #   - name: 'copy the package-lock.json files from github workspce'
-  #     run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
+    - name: 'copy the package-lock.json files from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
+    
+    - name: cat github workspace
+      run: | 
+        cd $GITHUB_WORKSPACE
+        ls
+        cd shared_folder
+        ls
+
+    - name: ls files
+      run: ls
   
-  #   - name: Start the server
-  #     run: |
-  #         set -x
-  #         node index.js & 
-  #         echo "hi harsh"
+    - name: Start the server
+      run: |
+          set -x
+          node index.js & 
+          echo "hi harsh"
 
-  #   - name: Wait for server to start
-  #     run: sleep 10
+    - name: Wait for server to start
+      run: sleep 10
         
 
       
