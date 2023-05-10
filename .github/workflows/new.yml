@@ -60,6 +60,9 @@ jobs:
     - name: give me file
       run: ls
 
+    - name: cat github workspace
+      run: cat $GITHUB_WORKSPACE/shared_folder
+
     - name: 'copy the node modulesfiles from github workspce'
       run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
 
