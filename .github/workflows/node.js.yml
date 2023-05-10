@@ -17,6 +17,12 @@ jobs:
         node-version: '14.x'
     - name: Install dependencies
       run: npm install express
+
+    - name: Archive the node_modules directory
+      uses: actions/upload-artifact@v2
+      with:
+        name: node_modules
+        path: node_modules
   runjob:
     needs: build
     runs-on: ubuntu-latest
@@ -30,6 +36,10 @@ jobs:
         host: localhost
         port: 3000
         timeout: 120
+    - name: Download the node_modules directory
+      uses: actions/download-artifact@v2
+      with:
+        name: node_modules
   
     - name: Start the server
       run: |
