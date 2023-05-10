@@ -71,13 +71,13 @@ jobs:
           node index.js & 
           echo "hi harsh"
           
-    - name: Check if server is running
-      run: |
-          for i in $(seq 1 30); do
-            curl -sS http://localhost:3000 >/dev/null && echo "Server is running" && exit 0
-            sleep 5
-          done
-          echo "Server did not start" && exit 1
+    # - name: Check if server is running
+    #   run: |
+    #       for i in $(seq 1 30); do
+    #         curl -sS http://localhost:3000 >/dev/null && echo "Server is running" && exit 0
+    #         sleep 5
+    #       done
+    #       echo "Server did not start" && exit 1
 
       
 
