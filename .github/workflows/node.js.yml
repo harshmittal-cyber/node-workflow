@@ -28,21 +28,22 @@ jobs:
       with:
         name: node_modules
         path: node_modules
+        working-directory: harshmittal-cyber/node-workflow
 
     - name: Upload package.json
       uses: actions/upload-artifact@v2
       with:
         name: package.json
         path: package.json
+        working-directory: harshmittal-cyber/node-workflow
+
 
     - name: Upload package-lock.json
       uses: actions/upload-artifact@v2
       with:
         name: package-lock.json
         path: package-lock.json
-
- 
-
+        working-directory: harshmittal-cyber/node-workflow
 
   runjob:
     needs: build
@@ -62,6 +63,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: node_modules
+        path: node_modules/
     
     - name: Download the package.json directory
       uses: actions/download-artifact@v2
