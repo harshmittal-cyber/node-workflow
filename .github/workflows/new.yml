@@ -18,19 +18,14 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
-    - name: Copy node_modules to shared folder
-      run: mkdir -p ${{ runner.temp }}/shared_folder && cp -r node_modules package.json package-lock.json ${{ runner.temp }}/shared_folder
-    # - name: Create shared folder
-    #   run: mkdir -p ${{ github.workspace }}/shared_folder
+    - name: Create shared folder
+      run: mkdir -p ${{ github.workspace }}/shared_folder
 
-    # - name: Copy node_modules
-    #   run: cp -r node_modules $GITHUB_WORKSPACE/shared_folder
-
-    # - name: Copy node_modules
-    #   run: cp -r package.json $GITHUB_WORKSPACE/shared_folder
-    
-    # - name: Copy node_modules
-    #   run: cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
+    - name: Copy node_modules
+      run: | 
+        cp -r node_modules $GITHUB_WORKSPACE/shared_folder
+        cp -r package.json $GITHUB_WORKSPACE/shared_folder
+        cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
    
   runjob:
     needs: build
@@ -46,42 +41,12 @@ jobs:
         port: 3000
         timeout: 120
 
-    # - name: cat github workspace
-    #   run: | 
-    #     cd $GITHUB_WORKSPACE
-    #     ls
-    #     cd shared_folder
-    #     ls
-    - name: Copy node_modules from shared folder
-      run: cp -r ${{ runner.temp }}/shared_folder/node_modules .
-
-    - name: Copy node_modules from shared folder
-      run: cp -r ${{ runner.temp }}/shared_folder/package-lock.json .
-
-    - name: Use node_modules
-      run: node index.js
-
-    - name: hi get folder
+    - name: 'copy the node modulesfiles from github workspce'
       run: | 
-        cd ${{ runner.temp }}
-        ls
-
-    # - name: ls files
-    #   run: ls
-
-    # - name: 'copy the node modulesfiles from github workspce'
-    #   run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
-
-    # - name: 'copy the package json files from github workspce'
-    #   run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
-
-    # - name: 'copy the package-lock.json files from github workspce'
-    #   run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
+        cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
+        cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
+        cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
     
-    # - name: give me file
-    #   run: ls
-  
-  
     # - name: Start the server
     #   run: |
     #       set -x
