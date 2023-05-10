@@ -18,17 +18,19 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
-    - name: Copy node_modules
-      run: cp -r node_modules $GITHUB_WORKSPACE
+    - name: Create shared folder
+      run: mkdir -p ${{ github.workspace }}/shared_folder
 
     - name: Copy node_modules
-      run: cp -r package.json $GITHUB_WORKSPACE
+      run: cp -r node_modules $GITHUB_WORKSPACE/shared_folder
+
+    - name: Copy node_modules
+      run: cp -r package.json $GITHUB_WORKSPACE/shared_folder
     
     - name: Copy node_modules
-      run: cp -r package-lock.json $GITHUB_WORKSPACE
+      run: cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
 
-    # - name: Create shared folder
-    #   run: mkdir -p ${{ github.workspace }}/shared_folder
+   
 
     # - name: copy node modules in github workspace
     #   run: cp -r node_modules ${{ github.workspace }}
@@ -59,13 +61,13 @@ jobs:
       run: ls
 
     - name: 'copy the node modulesfiles from github workspce'
-      run: cp -r $GITHUB_WORKSPACE/node_modules .
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
 
     - name: 'copy the package json files from github workspce'
-      run: cp ${{ github.workspace }}/package.json .
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
 
     - name: 'copy the package-lock.json files from github workspce'
-      run: cp ${{ github.workspace }}/package-lock.json .
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
   
     - name: Start the server
       run: |
