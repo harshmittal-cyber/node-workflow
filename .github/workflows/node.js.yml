@@ -23,4 +23,4 @@ jobs:
       run: npm install nodemon 
     - name: run the file
       if: ${{ success() }}
-      run: nodemon index.js
+      run: node index.js
