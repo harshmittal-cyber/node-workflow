@@ -21,14 +21,14 @@ jobs:
     # - name: Create shared folder
     #   run: mkdir -p ${{ github.workspace }}/shared_folder
 
-    - name: copy node modules in github workspace
-      run: cp -r node_modules ${{ github.workspace }}
+    # - name: copy node modules in github workspace
+    #   run: cp -r node_modules ${{ github.workspace }}
     
-    - name: copy node modules in github workspace
-      run: cp -r package.json ${{ github.workspace }}
+    # - name: copy node modules in github workspace
+    #   run: cp -r package.json ${{ github.workspace }}
     
-    - name: copy node modules in github workspace
-      run: cp -r package-lock.json ${{ github.workspace }}
+    # - name: copy node modules in github workspace
+    #   run: cp -r package-lock.json ${{ github.workspace }}
 
 
    
@@ -50,13 +50,13 @@ jobs:
       run: ls
 
     - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }} .
+      run: cp ${{ github.workspace }}/node_modules .
 
-    # - name: 'copy the files from github workspce'
-    #   run: cp ${{ github.workspace }}/shared_folder .
+    - name: 'copy the files from github workspce'
+      run: cp ${{ github.workspace }}/package.json .
 
-    # - name: 'copy the files from github workspce'
-    #   run: cp ${{ github.workspace }}/shared_folder .
+    - name: 'copy the files from github workspce'
+      run: cp ${{ github.workspace }}/package-lock.json .
   
     - name: Start the server
       run: |
