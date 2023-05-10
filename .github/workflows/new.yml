@@ -50,13 +50,13 @@ jobs:
       run: ls
 
     - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }}/shared_folder/node_modules .
+      run: cp ${{ github.workspace }}/shared_folder .
 
-    - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }}/shared_folder/package.json .
+    # - name: 'copy the files from github workspce'
+    #   run: cp ${{ github.workspace }}/shared_folder .
 
-    - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }}/shared_folder/package-lock.json .
+    # - name: 'copy the files from github workspce'
+    #   run: cp ${{ github.workspace }}/shared_folder .
   
     - name: Start the server
       run: |
