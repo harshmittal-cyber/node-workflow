@@ -18,6 +18,7 @@ jobs:
     - name: Install dependencies
       run: npm install express
   runjob:
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
