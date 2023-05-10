@@ -1,0 +1,26 @@
+name: Node.js CI2334
+
+on:
+  workflow_dispatch:
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci
+      - name: Copy node_modules
+        run: cp -r node_modules $GITHUB_WORKSPACE
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Copy node_modules from job1
+        run: cp -r $GITHUB_WORKSPACE/node_modules .
+      - name: give me file
+        run: ls
+      - name: Install dependencies
+        run: npm ci
+      
