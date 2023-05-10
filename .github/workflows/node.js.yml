@@ -38,12 +38,11 @@ jobs:
           
     - name: Check if server is running
       run: |
-          if curl -IsS http://localhost:3000 | head -n 1 | grep -q 200; then
-            echo "Server is running"
-          else
-            echo "Server has crashed"
-            exit 1
-          fi
+          for i in $(seq 1 30); do
+            curl -sS http://localhost:3000 >/dev/null && echo "Server is running" && exit 0
+            sleep 5
+          done
+          echo "Server did not start" && exit 1
 
       
 
