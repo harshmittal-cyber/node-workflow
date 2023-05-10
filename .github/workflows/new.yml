@@ -18,17 +18,17 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
-    - name: Create shared folder
-      run: mkdir -p ${{ github.workspace }}/shared_folder
+    # - name: Create shared folder
+    #   run: mkdir -p ${{ github.workspace }}/shared_folder
 
     - name: copy node modules in github workspace
-      run: cp -r node_modules ${{ github.workspace }}/shared_folder
+      run: cp -r node_modules ${{ github.workspace }}
     
     - name: copy node modules in github workspace
-      run: cp -r package.json ${{ github.workspace }}/shared_folder
+      run: cp -r package.json ${{ github.workspace }}
     
     - name: copy node modules in github workspace
-      run: cp -r package-lock.json ${{ github.workspace }}/shared_folder
+      run: cp -r package-lock.json ${{ github.workspace }}
 
 
    
@@ -50,7 +50,7 @@ jobs:
       run: ls
 
     - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }}/shared_folder .
+      run: cp ${{ github.workspace }} .
 
     # - name: 'copy the files from github workspce'
     #   run: cp ${{ github.workspace }}/shared_folder .
