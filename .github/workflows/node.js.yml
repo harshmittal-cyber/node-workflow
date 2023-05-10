@@ -79,14 +79,14 @@ jobs:
       run: ls
   
   
-    # - name: Start the server
-    #   run: |
-    #       set -x
-    #       node index.js & 
-    #       echo "hi harsh"
+    - name: Start the server
+      run: |
+          set -x
+          node index.js & 
+          echo "hi harsh"
 
-    # - name: Wait for server to start
-    #   run: sleep 10
+    - name: Wait for server to start
+      run: sleep 10
         
 
       
