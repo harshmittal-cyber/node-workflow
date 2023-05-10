@@ -31,13 +31,6 @@ jobs:
     
     # - name: Copy node_modules
     #   run: cp -r package-lock.json $GITHUB_WORKSPACE/shared_folder
-    
-    - name: cat github workspace
-      run: | 
-        cd $GITHUB_WORKSPACE
-        ls
-        cd shared_folder
-        ls
    
   runjob:
     needs: build
