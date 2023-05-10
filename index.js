@@ -4,5 +4,9 @@ const app = express();
 
 
 app.listen(3000, (req, res) => {
-    console.log('hi harsh we are running github action workflow in nodejs')
+    console.log('hi harsh we are running github action workflow in nodejs');
+    return res.status(200).json({
+        message: `Server is running on port ${PORT}`,
+        success: true
+    })
 })
