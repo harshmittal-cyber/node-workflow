@@ -26,15 +26,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14.x'
+        host: localhost
+        port: 3000
+        timeout: 120
   
     - name: Start the server
       run: |
           node index.js & 
           echo "hi harsh"
-      with:
-          host: localhost
-          port: 3000
-          timeout: 120
+          
     - name: Check if server is running
       run: |
           if curl -IsS http://localhost:3000 | head -n 1 | grep -q 200; then
