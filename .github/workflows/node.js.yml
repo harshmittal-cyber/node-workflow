@@ -18,7 +18,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Install express library
-      run: npm install express nodemon 
+      run: npm install express
+    - name: install nodemon
+      run: npm install nodemon 
     - name: run the file
       if: ${{ success() }}
       run: nodemon index.js
