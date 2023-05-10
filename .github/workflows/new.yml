@@ -70,15 +70,6 @@ jobs:
     - name: cat github workspace
       run: cd $GITHUB_WORKSPACE
 
-    - name: 'copy the node modulesfiles from github workspce'
-      run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
-
-    - name: 'copy the package json files from github workspce'
-      run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
-
-    - name: 'copy the package-lock.json files from github workspce'
-      run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
-    
     - name: cat github workspace
       run: | 
         cd $GITHUB_WORKSPACE
@@ -88,6 +79,17 @@ jobs:
 
     - name: ls files
       run: ls
+
+    - name: 'copy the node modulesfiles from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/node_modules .
+
+    - name: 'copy the package json files from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package.json .
+
+    - name: 'copy the package-lock.json files from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/shared_folder/package-lock.json .
+    
+  
   
     - name: Start the server
       run: |
