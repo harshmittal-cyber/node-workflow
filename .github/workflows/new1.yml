@@ -13,6 +13,7 @@ jobs:
       - name: Copy node_modules
         run: cp -r node_modules $GITHUB_WORKSPACE
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
