@@ -17,65 +17,70 @@ jobs:
         node-version: '14.x'
     - name: Install dependencies
       run: npm install express
-
-    - name: Archive the node_modules directory
-      uses: actions/upload-artifact@v2
-      with:
-        name: node_modules
-        path: node_modules
-
-    - name: Upload package.json
-      uses: actions/upload-artifact@v2
-      with:
-        name: package.json
-        path: package.json
-
-    - name: Upload package-lock.json
-      uses: actions/upload-artifact@v2
-      with:
-        name: package-lock.json
-        path: package-lock.json
-
- 
-
-
-  runjob:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14.x'
-        host: localhost
-        port: 3000
-        timeout: 120
-
-    - name: Download the node_modules directory
-      uses: actions/download-artifact@v2
-      with:
-        name: node_modules
-    
-    - name: Download the package.json directory
-      uses: actions/download-artifact@v2
-      with:
-        name: package.json
-    
-    - name: Download the node_modules directory
-      uses: actions/download-artifact@v2
-      with:
-        name: package-lock.json
-  
     - name: Start the server
       run: |
           set -x
           node index.js & 
           echo "hi harsh"
 
-    - name: Wait for server to start
-      run: sleep 10
+    # - name: Archive the node_modules directory
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: node_modules
+    #     path: node_modules
+
+    # - name: Upload package.json
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: package.json
+    #     path: package.json
+
+    # - name: Upload package-lock.json
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: package-lock.json
+    #     path: package-lock.json
+
+ 
+
+
+  # runjob:
+  #   needs: build
+  #   runs-on: ubuntu-latest
+
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Use Node.js 14.x
+  #     uses: actions/setup-node@v2
+  #     with:
+  #       node-version: '14.x'
+  #       host: localhost
+  #       port: 3000
+  #       timeout: 120
+
+  #   - name: Download the node_modules directory
+  #     uses: actions/download-artifact@v2
+  #     with:
+  #       name: node_modules
+    
+  #   - name: Download the package.json directory
+  #     uses: actions/download-artifact@v2
+  #     with:
+  #       name: package.json
+    
+  #   - name: Download the node_modules directory
+  #     uses: actions/download-artifact@v2
+  #     with:
+  #       name: package-lock.json
+  
+  #   - name: Start the server
+  #     run: |
+  #         set -x
+  #         node index.js & 
+  #         echo "hi harsh"
+
+  #   - name: Wait for server to start
+  #     run: sleep 10
         
 
       
