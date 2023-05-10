@@ -31,6 +31,18 @@ jobs:
       run: |
           node index.js & 
           echo "hi harsh"
+      with:
+          host: localhost
+          port: 3000
+          timeout: 120
+    - name: Check if server is running
+      run: |
+          if curl -IsS http://localhost:3000 | head -n 1 | grep -q 200; then
+            echo "Server is running"
+          else
+            echo "Server has crashed"
+            exit 1
+          fi
 
       
 
