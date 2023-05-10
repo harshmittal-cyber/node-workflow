@@ -26,10 +26,13 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          path: |
-            package.json
-            package-lock.json
-            node_modules/
+          path: package.json
+          
+      - name: Save artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: package-lock.json
 
   run:
     needs: build
