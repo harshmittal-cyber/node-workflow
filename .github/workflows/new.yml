@@ -1,0 +1,70 @@
+name: Node.js CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+    - name: Install dependencies
+      run: npm install express
+
+    - name: copy node modules in github workspace
+      run: cp -r node_modules $GITHUB_WORKSPACE/
+    
+    - name: copy node modules in github workspace
+      run: cp -r package.json $GITHUB_WORKSPACE/
+    
+    - name: copy node modules in github workspace
+      run: cp -r package-lock.json $GITHUB_WORKSPACE/
+
+
+   
+  runjob:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        host: localhost
+        port: 3000
+        timeout: 120
+
+    - name: give me file
+      run: ls
+
+    - name: 'copy the files from github workspce'
+      run: cp $GITHUB_WORKSPACE/node_modules .
+
+    - name: 'copy the files from github workspce'
+      run: cp $GITHUB_WORKSPACE/package.json .
+
+    - name: 'copy the files from github workspce'
+      run: cp $GITHUB_WORKSPACE/package-lock.json .
+  
+    - name: Start the server
+      run: |
+          set -x
+          node index.js & 
+          echo "hi harsh"
+
+    - name: Wait for server to start
+      run: sleep 10
+        
+
+      
+
+
