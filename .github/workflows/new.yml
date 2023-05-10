@@ -18,6 +18,15 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
+    - name: Copy node_modules
+      run: cp -r node_modules $GITHUB_WORKSPACE
+
+    - name: Copy node_modules
+      run: cp -r package.json $GITHUB_WORKSPACE
+    
+    - name: Copy node_modules
+      run: cp -r package-lock.json $GITHUB_WORKSPACE
+
     # - name: Create shared folder
     #   run: mkdir -p ${{ github.workspace }}/shared_folder
 
@@ -49,13 +58,13 @@ jobs:
     - name: give me file
       run: ls
 
-    - name: 'copy the files from github workspce'
-      run: cp ${{ github.workspace }}/node_modules .
+    - name: 'copy the node modulesfiles from github workspce'
+      run: cp -r $GITHUB_WORKSPACE/node_modules .
 
-    - name: 'copy the files from github workspce'
+    - name: 'copy the package json files from github workspce'
       run: cp ${{ github.workspace }}/package.json .
 
-    - name: 'copy the files from github workspce'
+    - name: 'copy the package-lock.json files from github workspce'
       run: cp ${{ github.workspace }}/package-lock.json .
   
     - name: Start the server
