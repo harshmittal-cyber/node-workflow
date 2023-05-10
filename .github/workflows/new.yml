@@ -18,6 +18,9 @@ jobs:
     - name: Install dependencies
       run: npm install express
 
+    - name: Create shared folder
+      run: mkdir -p ${{ github.workspace }}/shared_folder
+
     - name: copy node modules in github workspace
       run: cp -r node_modules ${{ github.workspace }}/shared_folder
     
