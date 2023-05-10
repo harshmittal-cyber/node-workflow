@@ -70,16 +70,12 @@ jobs:
   
     - name: Start the server
       run: |
+          set -x
           node index.js & 
           echo "hi harsh"
-          
+
     - name: Wait for server to start
       run: sleep 10
-
-    - name: Capture response from server
-      run: |
-          RESPONSE=$(curl -s http://localhost:3000)
-          echo "Server response: $RESPONSE"
         
 
       
