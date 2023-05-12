@@ -40,7 +40,7 @@ jobs:
         working-directory: harshmittal-cyber/node-workflow
 
   runjob:
-    # needs: build
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
