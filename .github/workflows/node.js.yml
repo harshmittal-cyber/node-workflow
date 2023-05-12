@@ -30,7 +30,6 @@ jobs:
       with:
         name: package.json
         path: package.json
-        working-directory: harshmittal-cyber/node-workflow
 
 
     - name: Upload package-lock.json
